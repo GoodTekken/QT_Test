@@ -1,0 +1,128 @@
+int main(int argc, char *argv[])
+{
+    qint8 m;
+    QCoreApplication a(argc,argv);
+    qDebug()<<"sizeof(uchar)="<<sizeof(uchar)<<"B\n";
+    qDebug()<<"sizeof(qint8)="<<sizeof(m)<<"B\n";
+    qDebug()<<"sizeof(quint8)="<<sizeof(quint8)<<"B\n";
+    qDebug()<<"sizeof(ushort)="<<sizeof(ushort)<<"B\n";
+    qDebug()<<"sizeof(qint16)="<<sizeof(qint16)<<"B\n";
+    qDebug()<<"sizeof(qint32)="<<sizeof(qint32)<<"B\n";
+    qDebug()<<"sizeof(quint32)="<<sizeof(quint32)<<"B\n";
+    qDebug()<<"sizeof(ulong)="<<sizeof(ulong)<<"B\n";
+    qDebug()<<"sizeof(qulonglong)="<<sizeof(qulonglong)<<"B\n";
+    return a.exec();
+}
+
+int main(int argc, char *argv[])
+{
+    //Method 1:const char*
+    QByteArray bal("Hello");
+    if('\0'==bal[5])
+    {
+        printf("bal[5]=\'\\0\'\n");
+    }
+
+    //Method 2:resize()
+    QByteArray ba;
+    ba.resize(6);
+    ba[0]=0x3c;
+    ba[1]=0xb8;
+    ba[2]=0x64;
+    ba[3]=0x18;
+    ba[4]=0xca;
+    ba.data()[5] = 0x31;
+    qDebug()<<"[]"<<ba[2];                       //[] d
+    qDebug()<<"at()"<<ba.at(2);                  //at() d
+    qDebug()<<"data()"<<ba.data()[2];            //data() d
+    qDebug()<<"constData()"<<ba.constData()[2];  //constData() d
+    qDebug()<<"constData()"<<ba.constData()[5];  //constData() 1
+
+    //Method 3:fill()
+    QByteArray ba1("Istambul");
+    ba1.fill('o');
+    //ba == "oooooooo"
+    ba1.fill('X',2);
+    //ba1 =="XX"
+}
+
+int main(int argc, char *argv[])
+{
+    //Method 1:left() mid() right
+    QByteArray ba("Hello,Tekken");
+    QByteArray x = ba.left(5);
+    QByteArray y = ba.mid(5,4);
+    QByteArray z = ba.right(5);
+
+    qDebug()<<"x"<<x;
+    qDebug()<<"y"<<y;
+    qDebug()<<"z"<<z;
+
+    //Method 2:size() length() count()
+    qDebug()<<"ba.size()"<<ba.size();
+    qDebug()<<"ba.length()"<<ba.length();
+    qDebug()<<"ba.count()"<<ba.count();
+}
+
+int main(int argc, char *argv[])
+{
+    //QByteArray::fromHex
+    QByteArray text = QByteArray::fromHex("517420697320677265617421"); //0x51 0x74 0x20
+    qDebug()<<text.data();      //return "Qt is great!"
+
+    //QByteArray::toHex()
+    QByteArray ba;
+    ba.resize(3);
+    ba[0]=0x30;
+    ba[1]=0x31;
+    ba[2]=0x32;
+    qDebug()<<ba.toHex(); //return "303132"
+
+    //number()
+    int n = 63;
+    qDebug()<<QByteArray::number(n);    //return "63"
+    qDebug()<<QByteArray::number(n,16); //return "3f"
+    qDebug()<<QByteArray::number(n,16).toUpper(); //return "3F"
+    qDebug()<<QByteArray::number(n,2);  //return "111111"
+    qDebug()<<QByteArray::number(n,8);  //return "77"
+
+    //number
+    qDebug()<<QByteArray::number(12345.6,'E',3); //return "1.235E+04"
+    qDebug()<<QByteArray::number(12345.6,'e',3); //return "1.235e+04"
+    qDebug()<<QByteArray::number(12345.6,'f',3); //return "12345.600"
+    qDebug()<<QByteArray::number(12345.6,'g',3); //return "1.23e+04"
+    qDebug()<<QByteArray::number(12345.6,'G',3); //return "1.23E+04"
+}
+
+int main(int argc, char *argv[])
+{
+    //toUpper()
+    QByteArray text("Qt by The Qt Company");
+    qDebug()<<text.toUpper();    //return "QT BY THE QT COMPANY"
+
+    //toLower()
+    qDebug()<<text.toLower();    //return "qt by the qt company"
+}
+
+int main(int argc, char *argv[])
+{
+    //QByteArray and char*
+    QByteArray ba("Qt by The Qt Company");
+    char *data = ba.data();
+    qDebug()<<ba.data();  //return "Qt by The Qt Company"
+    while(*data)          //return "[Q],[t],[ ],[b],[y],[ ],[T],[h],[e],[ ],[Q],[t],[ ],[C],[o],[m],[p],[a],[n],[y]"
+    {
+        std::cout<<"["<<*data<<"],";
+        ++data;
+    }
+
+    //std::string to QByteArray -toStdString()
+    QString str= QString("hello world!");
+    QByteArray arr = str.toLatin1();    //return "hello world!"
+    qDebug()<<arr.data();
+
+    //QByteArray to QString
+    QByteArray da("hello world!");
+    QString st = arr;
+    qDebug()<<str;  //return "hello world!"
+}
