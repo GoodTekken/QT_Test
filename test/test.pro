@@ -1,3 +1,6 @@
+unix:QMAKE_CFLAGS_WARN_ON +=-Wno-deprecated-copy
+unix:QMAKE_CXXFLAGS_WARN_ON +=-Wno-deprecated-copy
+
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -24,4 +27,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    Test_01
+    Test_01 \
+    Test_02
