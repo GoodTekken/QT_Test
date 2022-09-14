@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/liu.jpeg</file>
+    </qresource>
+</RCC>

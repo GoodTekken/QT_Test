@@ -1,0 +1,24 @@
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.resize(250,150);
+    w.show();
+    w.setWindowTitle("Hello world!");
+
+    QWidget w1;
+    w1.resize(300,300);
+    qDebug()<<w1.x();  //0
+    qDebug()<<w1.y();  //0
+    qDebug()<<w1.width();  //300
+    qDebug()<<w1.height(); //300
+    qDebug()<<w1.size();   //QSize(300, 300)
+
+    qDebug()<<w1.geometry();//QRect(0,0 300x300)
+
+
+    qDebug()<<w1.frameSize();//QSize(299, 299)
+    qDebug()<<w1.frameGeometry();//QRect(0,0 299x299)
+
+    return a.exec();
+}
