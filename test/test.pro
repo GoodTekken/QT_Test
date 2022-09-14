@@ -39,3 +39,23 @@ DISTFILES += \
 
 RESOURCES += \
     pic.qrc
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../MyLibrary/C++/release/ -ltest
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../MyLibrary/C++/debug/ -ltest
+else:unix: LIBS += -L$$PWD/../../MyLibrary/C++/ -ltest
+
+INCLUDEPATH += $$PWD/../../MyLibrary/C++
+DEPENDPATH += $$PWD/../../MyLibrary/C++
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../MyLibrary/C++/release/libtest.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../MyLibrary/C++/debug/libtest.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../MyLibrary/C++/release/test.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../MyLibrary/C++/debug/test.lib
+else:unix: PRE_TARGETDEPS += $$PWD/../../MyLibrary/C++/libtest.a
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../MyLibrary/C++/release/ -ladd
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../MyLibrary/C++/debug/ -ladd
+else:unix: LIBS += -L$$PWD/../../MyLibrary/C++/ -ladd
+
+INCLUDEPATH += $$PWD/../../MyLibrary/C++
+DEPENDPATH += $$PWD/../../MyLibrary/C++
