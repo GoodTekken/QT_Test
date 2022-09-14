@@ -13,28 +13,29 @@
 
 int main(int argc, char *argv[])
 {
-    char year[50],mouth[50],day[50],hour[20],min[20],sec[20];
-    QCoreApplication b(argc,argv);
-    QDateTime current_date_time = QDateTime::currentDateTime();
-    QString current_date = current_date_time.toString("yyyy.MM.dd hh:mm:ss.zzz ddd");
-    strcpy(year,current_date_time.toString("yyyy").toUtf8().data());
-    strcpy(mouth,current_date_time.toString("MM").toUtf8().data());
-    strcpy(day,current_date_time.toString("dd").toUtf8().data());
-    strcpy(hour,current_date_time.toString("hh").toUtf8().data());
-    strcpy(min,current_date_time.toString("mm").toUtf8().data());
-    strcpy(sec,current_date_time.toString("ss").toUtf8().data());
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.resize(250,150);
+    w.show();
+    w.setWindowTitle("Hello world!");
 
-    qDebug()<<current_date; //"2022.09.14 10:43:39.078 周三"
-    printf("%s.%s.%s %s:%s:%s\n",year,mouth,day,hour,min,sec); //2022.09.14 10:43:39
+    QWidget w1;
+    w1.resize(300,300);
+    qDebug()<<w1.x();  //0
+    qDebug()<<w1.y();  //0
+    qDebug()<<w1.width();  //300
+    qDebug()<<w1.height(); //300
+    qDebug()<<w1.size();   //QSize(300, 300)
 
-    return 0;
+    qDebug()<<w1.geometry();//QRect(0,0 300x300)
+
+
+    qDebug()<<w1.frameSize();//QSize(299, 299)
+    qDebug()<<w1.frameGeometry();//QRect(0,0 299x299)
+
+    return a.exec();
 }
-//QApplication a(argc, argv);
-//MainWindow w;
-//w.resize(250,150);
-//w.show();
-//w.setWindowTitle("Hello world!");
-//return a.exec();
+
 
 
 
