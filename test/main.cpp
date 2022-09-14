@@ -9,13 +9,14 @@
 
 int main(int argc, char *argv[])
 {
-    char g ='g';
+    QStringList list;
+    list<<"Bill Murray"<<"John Doe"<<"Bill Clinton";
+    QStringList result;
+    result = list.filter("Bill");
+    qDebug()<<result;   //("Bill Murray", "Bill Clinton")
 
-    char han = '汉';
-
-    qDebug()<<g;
-    qDebug()<<han;
-
+    result = list.filter("bill",Qt::CaseInsensitive);
+    qDebug()<<result;  //("Bill Murray", "Bill Clinton")
     return 0;
 }
 //        QApplication a(argc, argv);

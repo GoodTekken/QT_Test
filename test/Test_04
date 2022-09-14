@@ -1,0 +1,44 @@
+int main(int argc, char *argv[])
+{
+    char g ='g';
+    char han = '汉';
+    qDebug()<<g;
+    qDebug()<<han;
+
+    QString str("Hello");
+    QString str2 = "Hello";
+    qDebug()<<str;
+    qDebug()<<str2;
+
+    QString str3 = "你好";
+    qDebug()<<str3;
+
+    QString str4 = "Hello World";
+    int n = str4.size();
+    qDebug()<<n;
+    qDebug()<<str4.data()[0];
+    qDebug()<<str4.data()[3];
+
+    int n2=str4.count();
+    int n3=str4.length();
+    qDebug()<<n2;
+    qDebug()<<n3;
+
+    qDebug()<<str4.toUpper();
+    qDebug()<<str4.toLower();
+
+    QString test1 = " Welcome \t to \n you!  ";
+    QString test2 = test1.trimmed();
+    QString test3 = test1.simplified();
+    qDebug()<<test2;
+    qDebug()<<test3;
+
+    QByteArray sr =test1.toLocal8Bit();
+    int len= sr.length();
+    char* buf = new char[len];
+    strcpy(buf,sr.data());
+    printf("User:%s\n",buf);
+
+
+    return 0;
+}

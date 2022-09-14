@@ -29,4 +29,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     Test_01 \
     Test_02 \
-    Test_03
+    Test_03 \
+    Test_04
