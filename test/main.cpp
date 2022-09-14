@@ -21,7 +21,9 @@ extern int add(int a,int b);
 
 void *thfunc(void *arg)
 {
-    printf("in thrunc\n");
+    int *pn = (int*)(arg);
+    int n = *pn;
+    printf("in thrunc:n=%d\n",n);
     return (void*)0;
 }
 
@@ -32,14 +34,15 @@ int main(int argc, char *argv[])
     w.show();
 
     pthread_t tidp;
-    int ret;
-    ret = pthread_create(&tidp,NULL,thfunc,NULL);
+    int ret,n=110;
+    ret = pthread_create(&tidp,NULL,thfunc,&n);
     if(ret)
     {
         printf("pthread_create failed:%d\n",ret);
         return -1;
     }
-    sleep(1);
+//    sleep(1);
+    pthread_join(tidp,NULL); //wait for the child process
     printf("in main:thread id created\n");
     return a.exec();
 }
