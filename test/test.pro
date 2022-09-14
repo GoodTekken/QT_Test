@@ -1,7 +1,7 @@
 unix:QMAKE_CFLAGS_WARN_ON +=-Wno-deprecated-copy
 unix:QMAKE_CXXFLAGS_WARN_ON +=-Wno-deprecated-copy
 
-QT       += core gui
+QT       += core gui sql network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -33,7 +33,9 @@ DISTFILES += \
     Test_04 \
     Test_05 \
     Test_06 \
-    Test_07
+    Test_07 \
+    Test_08 \
+    Test_09
 
 RESOURCES += \
     pic.qrc

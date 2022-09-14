@@ -6,6 +6,8 @@
 #include <QtGlobal>
 #include <QDebug>
 #include <QWidget>
+#include <QtSql/QSqlDatabase>
+#include <QHostInfo>
 
 
 #include <QTimer>
@@ -16,9 +18,6 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
-    w.setWindowTitle("Hello world!");
-    w.setStyleSheet("background-image:url(:/res/liu.jpeg);border:1px solid black;");
-//    w.setStyleSheet(QStringLiteral("background: blue"));
     return a.exec();
 }
 
