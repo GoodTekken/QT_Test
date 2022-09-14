@@ -9,29 +9,12 @@
 
 int main(int argc, char *argv[])
 {
-    //indexOf() forward search
-    //int indexof(const QByteArray &ba, int from = 0)
-    QByteArray x("sticky question");
-    QByteArray y("sti");
-    qDebug()<<x.indexOf(y);    //return 0
-    qDebug()<<x.indexOf(y,1);  //return 10
-    qDebug()<<x.indexOf(y,10); //return 10
-    qDebug()<<x.indexOf(y,11); //return -1
+    char g ='g';
 
-    //lastIndexOf() backward search
-    //int lastIndecOf(const QByteArray &ba int from = -1)
-    x = ("sticky question");
-    y = ("s");
-    qDebug()<<x.lastIndexOf(y);    //return 10
-    qDebug()<<x.lastIndexOf(y,1);  //return 0
-    qDebug()<<x.lastIndexOf(y,10); //return 10
-    qDebug()<<x.lastIndexOf(y,11); //return 10
+    char han = '汉';
 
-    //insert()
-    //QByteArray & insert(int i, const QByteArray &ba)
-    QByteArray ba("Meal");
-    ba.insert(1,QByteArray("ontr"));
-    qDebug()<<ba.data();   //return Montreal
+    qDebug()<<g;
+    qDebug()<<han;
 
     return 0;
 }
