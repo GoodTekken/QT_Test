@@ -22,5 +22,7 @@ public slots:
     void ClickButton();
 private slots:
     void on_pushButton_clicked();
+    void on_colorBtn_clicked();
+    void on_move_clicked();
 };
 #endif // MAINWINDOW_H
