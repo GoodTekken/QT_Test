@@ -32,9 +32,11 @@ void mycleanfunc(void *arg)
 
 void *thrfunc1(void *arg)
 {
-    int m = 1;
+    int m = 1,n=2;
     printf("thrfunc1 comes\n");
     pthread_cleanup_push(mycleanfunc,&m);
+    pthread_cleanup_push(mycleanfunc,&n);
+    pthread_cleanup_pop(1);
     return (void *)0;
     pthread_cleanup_pop(0);
 }
@@ -67,13 +69,13 @@ int main(int argc, char *argv[])
     }
     pthread_join(pid1,NULL);
 
-    res=pthread_create(&pid2,NULL,thrfunc2,NULL);
-    if(res)
-    {
-        printf("pthread_create failed:%d\n",strerror(res));
-        exit(1);
-    }
-    pthread_join(pid2,NULL);
+//    res=pthread_create(&pid2,NULL,thrfunc2,NULL);
+//    if(res)
+//    {
+//        printf("pthread_create failed:%d\n",strerror(res));
+//        exit(1);
+//    }
+//    pthread_join(pid2,NULL);
 
 
     return a.exec();
