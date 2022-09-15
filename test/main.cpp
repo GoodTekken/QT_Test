@@ -40,6 +40,7 @@ void *thrfunc(void *arg)
         std::cout<<"thrfunc--left:"<<tm<<"s--"<<std::endl;
         sleep(1);
         tm--;
+        pthread_testcancel();
     }
     return(void*)0;
 }
