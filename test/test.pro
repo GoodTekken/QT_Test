@@ -47,7 +47,8 @@ DISTFILES += \
     Test_18 \
     Test_19 \
     Test_20 \
-    Test_21
+    Test_21 \
+    Test_22
 
 RESOURCES += \
     pic.qrc

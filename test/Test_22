@@ -1,29 +1,4 @@
-#include "MainWindow.h"
-
-#include <QApplication>
-#include <iostream>
-#include <QCoreApplication>
-#include <QtGlobal>
-#include <QDebug>
-#include <QWidget>
-#include <QtSql/QSqlDatabase>
-#include <QHostInfo>
-
-
-#include <QTimer>
-#include <qdatetime.h>
-
-#include <unistd.h>
-#include <errno.h>
-#include <limits.h>
-#include <sched.h>
 #include <signal.h>
-
-extern int f();
-extern int add(int a,int b);
-
-#define handle_error_en(en,msg) do {errno = en;perror(msg);exit(EXIT_FAILURE);} while(0)
-#define PTHREAD_NUM 2
 
 static void on_signal_term(int sig)
 {
@@ -62,7 +37,3 @@ int main(int argc, char *argv[])
 
     return a.exec();
 }
-
-
-
-
